@@ -8,6 +8,7 @@ import 'package:rspsa/utils/color_helper.dart';
 import 'package:rspsa/views/admin/controller/admin_dashboard_controller.dart';
 import 'package:rspsa/views/admin/screens/admin_dashboard_screen.dart';
 import 'package:rspsa/views/admin/screens/edit_profile_screen.dart';
+import 'package:rspsa/views/admin/screens/programs.dart';
 
 class AdminLandingScreen extends StatelessWidget {
   AdminLandingScreen({super.key});
@@ -135,9 +136,14 @@ class AdminLandingScreen extends StatelessWidget {
                             title: 'Dashboard',
                           ),
                         ),
-                        CommonCard(
-                          icon: Icons.menu,
-                          title: 'Programs',
+                        InkWell(
+                          onTap: () {
+                            Get.to(ProgramsScreen());
+                          },
+                          child: CommonCard(
+                            icon: Icons.menu,
+                            title: 'Programs',
+                          ),
                         ),
                       ],
                     ),
