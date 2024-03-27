@@ -16,57 +16,63 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     LoginController loginController = Get.put(LoginController());
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SizedBox(
-        height: MediaQuery.of(context).size.height,
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(
-              parent: AlwaysScrollableScrollPhysics()),
-          child: Padding(
-            padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 20.h),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(
+                parent: AlwaysScrollableScrollPhysics()),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: 100.h,
-                ),
-                SizedBox(
-                    // color: Colors.amber,
-                    height: 100.h,
-                    width: 200.w,
+                Container(
+                    height: 200.h,
+                    decoration: BoxDecoration(
+                        // color: Color.fromARGB(255, 229, 125, 118),
+                        borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(25),
+                            bottomRight: Radius.circular(25))),
+                    width: MediaQuery.of(context).size.width,
                     child: Image.asset('images/logo.png')),
                 SizedBox(
                   height: 10.h,
                 ),
-                Text(
-                  "Hello! let's get started",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 22.sp,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w500,
+                Container(
+                  child: Column(
+                    children: [
+                      Text(
+                        "Hello! let's get started",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 22.sp,
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5.h,
+                      ),
+                      Text(
+                        "Sign in to continue.",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 17.sp,
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      buildInputAndActionView(loginController, context),
+                    ],
                   ),
                 ),
-                SizedBox(
-                  height: 5.h,
-                ),
-                Text(
-                  "Sign in to continue.",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 17.sp,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                buildInputAndActionView(loginController, context),
               ],
             ),
           ),
@@ -156,7 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: ColorHelper.primeryColor,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10), // <-- Radius
+                  borderRadius: BorderRadius.circular(100), // <-- Radius
                 ),
               ),
               onPressed: () {
